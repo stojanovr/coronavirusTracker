@@ -61,6 +61,8 @@
    <?php 
    foreach($data as $key => $value){
     $caseIncrease = $value[$day_count]['confirmed'] - $value[$day_count_prev]['confirmed'];
+    $recoveryIncrease = $value[$day_count]['recovered'] - $value[$day_count_prev]['recovered'];
+    $deceasedIncrease = $value[$day_count]['deaths'] - $value[$day_count_prev]['deaths'];
     ?>
 
     <tr>
@@ -68,11 +70,21 @@
      <td>
       <?php echo(number_format($value[$day_count]['confirmed'])); ?>
       <?php if($caseIncrease != 0){ ?>
-       <small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($caseIncrease)); ?></small>
+       <small class="text-warning pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($caseIncrease)); ?></small>
      <?php } ?>
    </td>
-   <td><?php echo(number_format($value[$day_count]['recovered'])); ?></td>
-   <td><?php echo(number_format($value[$day_count]['deaths'])); ?></td>
+   <td>
+      <?php echo(number_format($value[$day_count]['recovered'])); ?>
+      <?php if($recoveryIncrease != 0){ ?>
+       <small class="text-success pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($recoveryIncrease)); ?></small>
+     <?php } ?>
+   </td>
+   <td>
+      <?php echo(number_format($value[$day_count]['deaths'])); ?>
+      <?php if($deceasedIncrease != 0){ ?>
+       <small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($deceasedIncrease)); ?></small>
+     <?php } ?>
+   </td>
  </tr>
 
 <?php } ?>
