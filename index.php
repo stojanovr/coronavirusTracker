@@ -6,11 +6,16 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
 
 	<!-- Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -32,7 +37,7 @@
   <div class="container my-5">
     <div class="row text-center">
      <div class="col-4 text-warning">
-      <h5>Confirmed</h5>
+      <h5>Confirmed Cases</h5>
       <?php echo number_format($total_confirmed); ?>
     </div>
     <div class="col-4 text-success">
@@ -40,7 +45,7 @@
       <?php echo number_format($total_recovered); ?>
     </div>
     <div class="col-4 text-danger">
-      <h5>Deceased</h5>
+      <h5>Deaths</h5>
       <?php echo number_format($total_deaths); ?>
     </div>
   </div>
@@ -48,13 +53,13 @@
 
 <div class="container-fluid">
   <div class="table-responsive">
-   <table class="table">
+   <table class="table" data-toggle="table">
     <thead class="thead-dark">
      <tr>
-      <th scope="col">Countries</th>
-      <th scope="col">Confirmed</th>
-      <th scope="col">Recovered</th>
-      <th scope="col">Deceased</th>
+      <th scope="col" data-field="country" data-sort-name="country" data-sort-order="desc" data-sortable="true">Country</th>
+      <th scope="col" data-field="confirmed" data-sortable="false">Confirmed Cases</th>
+      <th scope="col" data-field="recovered" data-sortable="false">Recovered</th>
+      <th scope="col" data-field="deaths" data-sortable="false">Deaths</th>
     </tr>
   </thead>
   <tbody>
@@ -62,7 +67,7 @@
    foreach($data as $key => $value){
     $caseIncrease = $value[$day_count]['confirmed'] - $value[$day_count_prev]['confirmed'];
     $recoveryIncrease = $value[$day_count]['recovered'] - $value[$day_count_prev]['recovered'];
-    $deceasedIncrease = $value[$day_count]['deaths'] - $value[$day_count_prev]['deaths'];
+    $deathIncrease = $value[$day_count]['deaths'] - $value[$day_count_prev]['deaths'];
     ?>
 
     <tr>
@@ -81,8 +86,8 @@
    </td>
    <td>
       <?php echo(number_format($value[$day_count]['deaths'])); ?>
-      <?php if($deceasedIncrease != 0){ ?>
-       <small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($deceasedIncrease)); ?></small>
+      <?php if($deathIncrease != 0){ ?>
+       <small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($deathIncrease)); ?></small>
      <?php } ?>
    </td>
  </tr>
