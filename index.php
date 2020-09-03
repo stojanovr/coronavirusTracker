@@ -104,7 +104,7 @@
 <div class="col-xs-12 col-md-3">
   <div class="sticky-top">
     <div class="pt-2" style="height: 50vh;">
-      <iframe src="https://ourworldindata.org/grapher/full-list-cumulative-total-tests-per-thousand" style="width: 100%; height: 400px;"></iframe>
+      <iframe src="https://ourworldindata.org/grapher/full-list-cumulative-total-tests-per-thousand" style="width: 100%; height: 475px;"></iframe>
     </div>
     <a class="twitter-timeline" data-width="100vw" data-height="50vh" data-dnt="true" data-theme="light" href="https://twitter.com/CDCgov?ref_src=twsrc%5Etfw">Tweets by CDCgov</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
