@@ -32,15 +32,15 @@
 		<div class="row text-center">
 			<div class="col-4 text-warning">
 				<h5>Confirmed</h5>
-				<?php echo $total_confirmed; ?>
+				<?php echo number_format($total_confirmed); ?>
 			</div>
 			<div class="col-4 text-success">
 				<h5>Recovered</h5>
-				<?php echo $total_recovered; ?>
+				<?php echo number_format($total_recovered); ?>
 			</div>
 			<div class="col-4 text-danger">
 				<h5>Deceased</h5>
-				<?php echo $total_deaths; ?>
+				<?php echo number_format($total_deaths); ?>
 			</div>
 		</div>
 	</div>
@@ -65,13 +65,13 @@
 						<tr>
 							<th><?php echo $key; ?></th>
 							<td>
-								<?php echo $value[$day_count]['confirmed']; ?>
+								<?php echo(number_format($value[$day_count]['confirmed'])); ?>
 								<?php if($caseIncrease != 0){ ?>
-									<small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo $caseIncrease; ?></small>
+									<small class="text-danger pl-1"><i class="fas fa-arrow-up"></i><?php echo(number_format($caseIncrease)); ?></small>
 								<?php } ?>
 							</td>
-							<td><?php echo $value[$day_count]['recovered']; ?></td>
-							<td><?php echo $value[$day_count]['deaths']; ?></td>
+							<td><?php echo(number_format($value[$day_count]['recovered'])); ?></td>
+							<td><?php echo(number_format($value[$day_count]['deaths'])); ?></td>
 						</tr>
 
 					<?php } ?>
